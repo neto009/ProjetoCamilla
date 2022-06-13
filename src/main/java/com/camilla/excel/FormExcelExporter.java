@@ -35,11 +35,10 @@ public class FormExcelExporter {
         font.setFontHeight(16);
         style.setFont(font);
 
-        createCell(row, 0, "User ID", style);
-        createCell(row, 1, "E-mail", style);
-        createCell(row, 2, "Nome", style);
-        createCell(row, 3, "Telefone", style);
-        createCell(row, 4, "Valor Imovel", style);
+        createCell(row, 0, "E-mail", style);
+        createCell(row, 1, "Nome", style);
+        createCell(row, 2, "Telefone", style);
+        createCell(row, 3, "Valor Imovel", style);
 
     }
 
@@ -68,7 +67,6 @@ public class FormExcelExporter {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
 
-            createCell(row, columnCount++, form.getId(), style);
             createCell(row, columnCount++, form.getEmail(), style);
             createCell(row, columnCount++, form.getNome(), style);
             createCell(row, columnCount++, form.getTelefone(), style);
