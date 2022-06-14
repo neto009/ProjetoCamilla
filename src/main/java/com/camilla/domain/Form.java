@@ -25,15 +25,14 @@ public class Form {
     @NotNull(message = "O campo não pode ser nulo")
     @NotEmpty(message = "O campo telefone não pode ser vazio")
     @NotBlank(message = "O campo telefone não pode estar em branco")
-    @Min(value = 8, message = "O telefone deve possuir no minimo 08 digitos!")
     @Pattern(regexp = "\\d+", message = "Você deve informar apenas números!")
     private String telefone;
-    @NotEmpty
-    @NotNull
-    @NotBlank
+    @NotEmpty(message = "O campo e-mail não pode ser vazio")
+    @NotNull(message = "O campo não pode ser nulo")
+    @NotBlank(message = "O campo e-mail não pode estar em branco")
     @Email(message = "Você deve informar um e-mail válido!")
     private String email;
-    @NotNull
+    @NotNull(message = "O campo não pode ser nulo")
     @NotEmpty
     @NotBlank
     private String valorImovel;

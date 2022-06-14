@@ -76,11 +76,8 @@ public class UserController {
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=users_" + currentDateTime + ".xlsx";
         response.setHeader(headerKey, headerValue);
-
         List<Form> listForm = service.listAll();
-
         FormExcelExporter excelExporter = new FormExcelExporter(listForm);
-
         excelExporter.export(response);
     }
 }
