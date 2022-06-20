@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -67,7 +68,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-    @GetMapping("/users/export/excel")
+    @GetMapping("/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");

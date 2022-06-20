@@ -2,9 +2,8 @@ package com.camilla.service;
 
 import com.camilla.domain.User;
 import com.camilla.repository.UserRepository;
-import com.camilla.service.exception.ParticipanteNaoEncontradoException;
+import com.camilla.service.exception.UserNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,7 +17,7 @@ public class UserService {
     private UserRepository repository;
 
     public User findById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new ParticipanteNaoEncontradoException(id));
+        return repository.findById(id).orElseThrow(() -> new UserNaoEncontradoException(id));
     }
 
     public List<User> todos() {
