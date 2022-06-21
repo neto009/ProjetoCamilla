@@ -5,7 +5,9 @@ import javax.validation.constraints.*;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -31,8 +33,6 @@ public class Form {
     @NotBlank(message = "O campo e-mail não pode estar em branco")
     @Email(message = "Você deve informar um e-mail válido!")
     private String email;
-    @Temporal(TemporalType.DATE)
-    @Column(name = "publication_date", columnDefinition = "DATE")
-    private Date publicationDate;
-
+    @CreationTimestamp
+    private LocalDateTime publicationDate;
 }
