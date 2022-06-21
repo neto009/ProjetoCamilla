@@ -38,7 +38,7 @@ public class FormExcelExporter {
         createCell(row, 0, "E-mail", style);
         createCell(row, 1, "Nome", style);
         createCell(row, 2, "Telefone", style);
-        createCell(row, 3, "Valor Imovel", style);
+        createCell(row, 3, "Data", style);
 
     }
 
@@ -70,7 +70,7 @@ public class FormExcelExporter {
             createCell(row, columnCount++, form.getEmail(), style);
             createCell(row, columnCount++, form.getNome(), style);
             createCell(row, columnCount++, form.getTelefone(), style);
-            createCell(row, columnCount++, form.getValorImovel(), style);
+            createCell(row, columnCount++, form.getPublicationDate(), style);
 
         }
     }

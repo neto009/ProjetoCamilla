@@ -1,17 +1,16 @@
 package com.camilla.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
+@Entity
 @Data
 @NoArgsConstructor
-@Entity
 public class Form {
 
     @Id
@@ -32,8 +31,8 @@ public class Form {
     @NotBlank(message = "O campo e-mail não pode estar em branco")
     @Email(message = "Você deve informar um e-mail válido!")
     private String email;
-    @NotNull(message = "O campo não pode ser nulo")
-    @NotEmpty
-    @NotBlank
-    private String valorImovel;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "publication_date", columnDefinition = "DATE")
+    private Date publicationDate;
+
 }
