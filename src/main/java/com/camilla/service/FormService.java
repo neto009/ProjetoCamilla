@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -16,7 +19,11 @@ public class FormService {
     private FormRepository repository;
 
     public List<Form> listAll() {
-        return repository.findAll(Sort.by("email").ascending());
+        return repository.findAll(Sort.by("publicationDate").descending());
+    }
+
+    public List<Form> listBetween(LocalDate inicio, LocalDate fim) {
+        return repository.findByPublicationDateBetween(inicio, fim);
     }
 
     public Form save(Form form) {

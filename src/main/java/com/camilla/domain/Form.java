@@ -3,10 +3,12 @@ package com.camilla.domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -34,5 +36,6 @@ public class Form {
     @Email(message = "Você deve informar um e-mail válido!")
     private String email;
     @CreationTimestamp
-    private LocalDateTime publicationDate;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate publicationDate;
 }
