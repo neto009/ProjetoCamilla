@@ -7,9 +7,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Entity
@@ -35,7 +37,8 @@ public class Form {
     @NotBlank(message = "O campo e-mail não pode estar em branco")
     @Email(message = "Você deve informar um e-mail válido!")
     private String email;
+    @Column(name = "publication_date", columnDefinition = "DATE")
     @CreationTimestamp
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate publicationDate;
 }

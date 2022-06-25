@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeHttpRequests()
                 .antMatchers("/", "/form").permitAll()
                 .anyRequest().authenticated().and()
-                .csrf((csrf) -> csrf.ignoringAntMatchers("/token","/form"))
+                .csrf((csrf) -> csrf.ignoringAntMatchers("/token","/form", "/buscaPeriodo"))
                 .httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

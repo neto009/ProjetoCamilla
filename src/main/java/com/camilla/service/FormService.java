@@ -1,5 +1,6 @@
 package com.camilla.service;
 
+import com.camilla.domain.DateConsult;
 import com.camilla.domain.Form;
 import com.camilla.domain.User;
 import com.camilla.repository.FormRepository;
@@ -22,8 +23,8 @@ public class FormService {
         return repository.findAll(Sort.by("publicationDate").descending());
     }
 
-    public List<Form> listBetween(LocalDate inicio, LocalDate fim) {
-        return repository.findByPublicationDateBetween(inicio, fim);
+    public List<Form> listBetween(DateConsult data) {
+        return repository.searchPublicationDateBetween(data.getDataInicio(), data.getDataFim());
     }
 
     public Form save(Form form) {

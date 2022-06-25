@@ -1,8 +1,10 @@
 package com.camilla.controller;
 
+import com.camilla.domain.DateConsult;
 import com.camilla.domain.Form;
 import com.camilla.service.FormService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +28,8 @@ public class FormController {
     }
 
     @PostMapping("/buscaPeriodo")
-    public ResponseEntity<List<Form>> findByDate(@RequestBody LocalDate inicio, LocalDate fim) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.listBetween(inicio, fim));
+    public ResponseEntity<List<Form>> findByDate(@RequestBody DateConsult data) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.listBetween(data));
     }
 
     @GetMapping
