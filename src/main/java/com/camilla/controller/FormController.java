@@ -22,16 +22,19 @@ public class FormController {
     @Autowired
     private FormService service;
 
+    @CrossOrigin(origins = "http://camillarocha.herokuapp.com")
     @PostMapping
     public ResponseEntity<Form> createForm(@RequestBody @Valid Form form) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(form));
     }
 
+    @CrossOrigin(origins = "http://camillarocha.herokuapp.com")
     @PostMapping("/buscaPeriodo")
     public ResponseEntity<List<Form>> findByDate(@RequestBody DateConsult data) {
         return ResponseEntity.status(HttpStatus.OK).body(service.listBetween(data));
     }
 
+    @CrossOrigin(origins = "http://camillarocha.herokuapp.com")
     @GetMapping
     public ResponseEntity<List<Form>>findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(service.listAll());
