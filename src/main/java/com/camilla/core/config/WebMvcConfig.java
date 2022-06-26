@@ -11,7 +11,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry){
         registry.addMapping("/**")
                 .allowedMethods("*")
-                .allowedOrigins("http://camillarocha.herokuapp.com")
+                .allowedOrigins("https://camillarocha.herokuapp.com")
                 .allowedHeaders("*")
                 .allowCredentials(false)
                 .maxAge(-1);
