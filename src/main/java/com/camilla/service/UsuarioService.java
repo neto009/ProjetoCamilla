@@ -1,7 +1,7 @@
 package com.camilla.service;
 
-import com.camilla.domain.User;
-import com.camilla.repository.UserRepository;
+import com.camilla.domain.Usuario;
+import com.camilla.repository.UsuarioRepository;
 import com.camilla.service.exception.UserNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,30 +11,30 @@ import java.util.List;
 
 @Service
 @Transactional
-public class UserService {
+public class UsuarioService {
 
     @Autowired
-    private UserRepository repository;
+    private UsuarioRepository repository;
 
-    public User findById(Long id) {
+    public Usuario findById(Long id) {
         return repository.findById(id).orElseThrow(() -> new UserNaoEncontradoException(id));
     }
 
-    public List<User> todos() {
+    public List<Usuario> todos() {
         return repository.findAll();
     }
 
-    public User save(User user) {
-        return repository.save(user);
+    public Usuario save(Usuario usuario) {
+        return repository.save(usuario);
     }
 
     public void delete(Long id) {
         repository.deleteById(id);
     }
 
-    public User update(Long id, User user) {
-        user.setId(id);
-        return repository.save(user);
+    public Usuario update(Long id, Usuario usuario) {
+        usuario.setId(id);
+        return repository.save(usuario);
     }
 
 }

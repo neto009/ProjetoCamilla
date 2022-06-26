@@ -1,10 +1,10 @@
 package com.camilla.controller;
 
 import com.camilla.domain.Form;
-import com.camilla.domain.User;
+import com.camilla.domain.Usuario;
 import com.camilla.excel.FormExcelExporter;
 import com.camilla.service.FormService;
-import com.camilla.service.UserService;
+import com.camilla.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,24 +21,24 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/users")
-public class UserController {
+public class UsuarioController {
 
     @Autowired
     private FormService service;
 
     @Autowired
-    private UserService userService;
+    private UsuarioService userService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> participante(@PathVariable Long id) {
-        User existingItemOptional = userService.findById(id);
+    public ResponseEntity<Usuario> participante(@PathVariable Long id) {
+        Usuario existingItemOptional = userService.findById(id);
         return ResponseEntity.status(HttpStatus.OK).body(existingItemOptional);
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> users() {
+    public ResponseEntity<List<Usuario>> users() {
         try {
-            List<User> items = userService.todos();
+            List<Usuario> items = userService.todos();
             if (items.isEmpty())
                 return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
             return ResponseEntity.status(HttpStatus.OK).body(items);
@@ -48,8 +48,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> novo(@RequestBody @Valid User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+    public ResponseEntity<Usuario> novo(@RequestBody @Valid Usuario usuario) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(usuario));
     }
 
     @DeleteMapping("/{id}")
@@ -59,11 +59,11 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> atualiza(@PathVariable Long id, @RequestBody User user) {
-        User user1 = userService.update(id, user);
+    public ResponseEntity<Usuario> atualiza(@PathVariable Long id, @RequestBody Usuario usuario) {
+        Usuario usuario1 = userService.update(id, usuario);
 
-        if (user1 != null) {
-            return ResponseEntity.status(HttpStatus.OK).body(userService.update(id, user));
+        if (usuario1 != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(userService.update(id, usuario));
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

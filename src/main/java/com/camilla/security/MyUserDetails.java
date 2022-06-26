@@ -1,16 +1,15 @@
 package com.camilla.security;
+import com.camilla.domain.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import com.camilla.domain.User;
 
 import java.util.Collection;
 
 public class MyUserDetails implements UserDetails{
-    private User usuario;
+    private Usuario usuario;
 
-    public MyUserDetails(User user) {
-        this.usuario = user;
+    public MyUserDetails(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
