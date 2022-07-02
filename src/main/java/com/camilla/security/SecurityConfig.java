@@ -42,8 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                .cors().and()
                 .authorizeHttpRequests()
-                .antMatchers("/", "/form").permitAll()
+                .antMatchers("/", "/form", "/token").permitAll()
                 .anyRequest().authenticated().and()
                 .csrf((csrf) -> csrf.ignoringAntMatchers("/token","/form", "/buscaPeriodo"))
                 .httpBasic(Customizer.withDefaults())
