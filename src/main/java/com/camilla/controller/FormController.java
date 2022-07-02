@@ -23,7 +23,7 @@ public class FormController {
     private FormService service;
 
     @CrossOrigin(origins = "https://camillarocha.herokuapp.com")
-    @PostMapping
+    @PostMapping("/cadastro")
     public ResponseEntity<Form> createForm(@RequestBody @Valid Form form) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(form));
     }

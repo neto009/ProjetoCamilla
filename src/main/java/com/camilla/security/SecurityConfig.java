@@ -28,8 +28,10 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Configuration
+@CrossOrigin
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${jwt.public.key}")
@@ -44,9 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors().and()
                 .authorizeHttpRequests()
-                .antMatchers("/", "/form", "/token").permitAll()
+                .antMatchers("/", "/form/cadastro", "/token").permitAll()
                 .anyRequest().authenticated().and()
-                .csrf((csrf) -> csrf.ignoringAntMatchers("/token","/form", "/buscaPeriodo"))
+                .csrf((csrf) -> csrf.ignoringAntMatchers("/token","/form", "/buscaPeriodo", "/form/cadastro"))
                 .httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
