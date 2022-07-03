@@ -15,6 +15,6 @@ import java.util.List;
 
 @Repository
 public interface FormRepository extends JpaRepository<Form, Long> {
-    @Query(value = "select * from form where publication_date between convert(:dataInicio, date) and convert(:dataFim, date)", nativeQuery = true)
-    List<Form> searchPublicationDateBetween(@Param("dataInicio") String dataInicio, @Param("dataFim") String Fim);
+    @Query(value = "select * from form where publication_date between to_date(?, 'YYYY-MM-DD') and to_date(?, 'YYYY-MM-DD')", nativeQuery = true)
+    List<Form> searchPublicationDateBetween(String dataInicio, String dataFim);
 }
